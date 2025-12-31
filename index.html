@@ -726,16 +726,24 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 15px;
-            height: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            /* Almost invisible */
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 215, 0, 0.2);
             border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.5);
             cursor: pointer;
             z-index: 99999;
             transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #bypassBtn::after {
+            content: '⏩';
+            font-size: 14px;
+            opacity: 0.7;
         }
 
         #bypassBtn:hover {
