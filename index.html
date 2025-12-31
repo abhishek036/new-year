@@ -178,7 +178,7 @@
             /* Reduced blur for performance */
             filter: blur(40px);
             opacity: 0.5;
-            /* Removed bokehDrift animation to stop 'shaking' and lag */
+            animation: bokehDrift 60s ease-in-out infinite;
             transform: translate3d(0, 0, 0);
         }
 
@@ -398,7 +398,7 @@
         .countdown-wrapper {
             width: 100%;
             max-width: 1000px;
-            animation: fadeInUp 1s 0.2s var(--ease-out-expo) both;
+            animation: fadeInUp 1s 0.2s var(--ease-out-expo) both, float 8s ease-in-out infinite;
         }
 
         .countdown-glass {
@@ -719,6 +719,32 @@
         /* =====================================================
    FOOTER
    ===================================================== */
+
+
+        /* Hidden Bypass Button */
+        #bypassBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            /* Almost invisible */
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            z-index: 99999;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #bypassBtn:hover {
+            background: rgba(255, 215, 0, 0.3);
+            /* Gold hint on hover */
+            transform: scale(1.2);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
         .footer {
             margin-top: auto;
             padding: var(--space-8) var(--space-6);
@@ -846,7 +872,7 @@
             width: 280px;
             height: 280px;
             transform: rotate(-8deg);
-            /* Removed animation: subtleShake1 */
+            animation: subtleShake1 6s ease-in-out infinite;
             border: 5px solid #FF6B9D;
             border-radius: 20px;
             background:
@@ -864,7 +890,7 @@
             width: 260px;
             height: 420px;
             transform: rotate(3deg);
-            /* Removed animation: subtleShake2 */
+            animation: subtleShake2 7s ease-in-out infinite;
             border: 5px solid #00D2FF;
             border-radius: 24px;
             background: linear-gradient(#0a0a0f, #0a0a0f);
@@ -891,7 +917,7 @@
             width: 260px;
             height: 260px;
             transform: rotate(-3deg);
-            /* Removed animation: subtleShake3 */
+            animation: subtleShake3 6.5s ease-in-out infinite;
             border: 5px dashed #FFD700;
             border-radius: 18px;
             background: linear-gradient(#0a0a0f, #0a0a0f);
@@ -929,7 +955,7 @@
             }
 
             50% {
-                transform: rotate(4deg) translateX(-4px);
+                transform: rotate(5deg) translateX(-4px);
             }
         }
 
@@ -3026,6 +3052,7 @@
     <nav class="top-bar" role="navigation" aria-label="Main navigation">
         <div class="logo">NYE 2026</div>
         <div class="top-controls">
+            <!-- Theme Toggle -->
             <button class="toggle-btn" id="themeToggle" aria-label="Toggle theme">
                 <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="5" />
@@ -3305,9 +3332,9 @@
                         animation: { enable: true, speed: 1.5, minimumValue: 0.5, sync: false }
                     },
                     move: {
-                        enable: false,
-                        speed: 0.6,
-                        direction: "top",
+                        enable: true,
+                        speed: 0.4,
+                        direction: "none",
                         random: true,
                         straight: false,
                         outModes: { default: "out" }
@@ -3918,6 +3945,22 @@
                 }
             }
         }
+
+        // Bypass Button Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const bypassBtn = document.getElementById('bypassBtn');
+            if (bypassBtn) {
+                bypassBtn.addEventListener('click', () => {
+                    console.log('🚀 Bypass activated!');
+                    // Hide button
+                    bypassBtn.style.display = 'none';
+
+                    // Trigger cinematic sequence immediately
+                    cinematicPlayed = true;
+                    playCinematicSequence();
+                });
+            }
+        });
 
         // =====================================================
         // FLASHCARD CAROUSEL LOGIC
