@@ -1409,28 +1409,28 @@
         // =====================================================
         const quizQuestions = [
             {
-                question: "What's my favorite thing about you?",
+                question: "What does 'WiFi' actually stand for?",
                 image: "ques 1.jpeg",
-                options: ["Your smile", "Your laugh", "Your kindness", "Everything!"],
-                correct: 3
+                options: ["Wireless Fidelity", "Wireless Field", "It stands for nothing", "Wide Frequency"],
+                correct: 2
             },
             {
-                question: "What do I always say when I see you?",
+                question: "What is my favorite travel destination?",
                 image: "ques 2.jpeg",
-                options: ["Hello!", "You look amazing!", "I missed you!", "There's my favorite person!"],
-                correct: 3
+                options: ["Kedarnath", "Kashmir", "Vrindavan", "Darjeeling"],
+                correct: [0, 2]
             },
             {
-                question: "What's our best memory together?",
+                question: "Think about the 'Pikachu' tail. What color is the tip?",
                 image: "ques 3.jpeg",
-                options: ["That random adventure", "Late night talks", "Silly moments", "All of them!"],
-                correct: 3
+                options: ["Black", "Brown", "Yellow (No color)", "White"],
+                correct: 2
             },
             {
-                question: "What do I wish for you in 2026?",
+                question: "Which of these is NOT a nut?",
                 image: "ques 4.jpeg",
-                options: ["Happiness", "Success", "Love", "All the above and more!"],
-                correct: 3
+                options: ["Walnut", "Peanut", "Hazelnut", "Cashew"],
+                correct: 1
             }
         ];
 
@@ -1468,15 +1468,23 @@
 
             options.forEach(opt => opt.classList.add('disabled'));
 
-            if (idx === q.correct) {
+            const isCorrect = Array.isArray(q.correct) ? q.correct.includes(idx) : idx === q.correct;
+
+            if (isCorrect) {
                 options[idx].classList.add('correct');
                 score += 10;
                 document.getElementById('feedbackText').textContent = '✨ Correct! +10 points!';
                 document.getElementById('feedbackText').classList.add('correct');
             } else {
                 options[idx].classList.add('wrong');
-                options[q.correct].classList.add('correct');
-                document.getElementById('feedbackText').textContent = 'Almost! The answer was ' + ['A', 'B', 'C', 'D'][q.correct];
+                if (Array.isArray(q.correct)) {
+                    q.correct.forEach(c => options[c].classList.add('correct'));
+                    const answers = q.correct.map(c => ['A', 'B', 'C', 'D'][c]).join(' & ');
+                    document.getElementById('feedbackText').textContent = 'Almost! The answer was ' + answers;
+                } else {
+                    options[q.correct].classList.add('correct');
+                    document.getElementById('feedbackText').textContent = 'Almost! The answer was ' + ['A', 'B', 'C', 'D'][q.correct];
+                }
                 document.getElementById('feedbackText').classList.add('wrong');
             }
 
@@ -1489,7 +1497,7 @@
                 } else {
                     showResult();
                 }
-            }, 1500);
+            }, 2500); // Increased delay to read feedback
         }
 
         function showResult() {
