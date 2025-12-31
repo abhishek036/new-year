@@ -470,8 +470,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: var(--space-4);
-            flex-wrap: wrap;
+            gap: clamp(0.5rem, 2vw, 2rem);
+            flex-wrap: nowrap;
+            width: 100%;
         }
 
         .timer-unit {
@@ -479,10 +480,11 @@
             flex-direction: column;
             align-items: center;
             gap: var(--space-2);
+            flex: 1;
         }
 
         .timer-digit {
-            font-size: clamp(3.5rem, 12vw, 7rem);
+            font-size: clamp(2.5rem, 8vw, 6rem);
             font-weight: 800;
             min-width: clamp(90px, 18vw, 160px);
             padding: var(--space-4) var(--space-6);
@@ -757,11 +759,13 @@
             }
 
             .timer-grid {
-                gap: var(--space-3);
+                gap: var(--space-2);
+                flex-wrap: wrap;
             }
 
             .timer-unit {
                 width: 45%;
+                flex: none;
             }
 
             .bento-grid {
@@ -3256,7 +3260,7 @@
                 background: { color: { value: "transparent" } },
                 fpsLimit: 60,
                 particles: {
-                    number: { value: 60, density: { enable: true, area: 900 } },
+                    number: { value: 30, density: { enable: true, area: 800 } },
                     color: { value: ["#FFD700", "#00D2FF", "#A855F7", "#FF6B9D", "#10B981"] },
                     shape: { type: "circle" },
                     opacity: {
