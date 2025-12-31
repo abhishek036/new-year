@@ -3112,9 +3112,7 @@
         const secondsEl = $('seconds');
         const themeToggle = $('themeToggle');
         const soundToggle = $('soundToggle');
-        const celebrationsEl = $('celebrationsCount');
-        const viewersEl = $('viewersCount');
-        const wishesEl = $('wishesCount');
+
 
         // =====================================================
         // STATE
@@ -3282,33 +3280,7 @@
         // =====================================================
         // LIVE COUNTERS ANIMATION
         // =====================================================
-        function animateCounter(el, target, duration = 2000) {
-            const start = 0;
-            const startTime = performance.now();
 
-            function update(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 3);
-                const current = Math.floor(start + (target - start) * eased);
-                el.textContent = current.toLocaleString();
-                if (progress < 1) requestAnimationFrame(update);
-            }
-            requestAnimationFrame(update);
-        }
-
-        function updateLiveCounters() {
-            // Simulated live data
-            const base = {
-                celebrations: 12847,
-                viewers: 156432,
-                wishes: 892156
-            };
-
-            animateCounter(celebrationsEl, base.celebrations + Math.floor(Math.random() * 500), 1500);
-            animateCounter(viewersEl, base.viewers + Math.floor(Math.random() * 5000), 1500);
-            animateCounter(wishesEl, base.wishes + Math.floor(Math.random() * 10000), 1500);
-        }
 
         // =====================================================
         // PARTICLES CONFIGURATION
@@ -3420,9 +3392,7 @@
             // Removed broken ctaBtn listener
 
 
-            // Initialize live counters
-            setTimeout(updateLiveCounters, 500);
-            setInterval(updateLiveCounters, 10000);
+
 
             // Audio context on first interaction
             document.addEventListener('click', () => {
