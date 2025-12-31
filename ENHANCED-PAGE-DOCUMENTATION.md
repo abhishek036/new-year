@@ -2,7 +2,7 @@
 
 ## Overview
 
-**File**: `enhanced.html`  
+**File**: `index.html`  
 **Title**: New Year 2026 | Entering The Future  
 **Purpose**: An immersive, luxury countdown experience for New Year 2026 celebration.
 
@@ -179,7 +179,7 @@ const TARGET_DATE = new Date('January 1, 2026 00:00:00').getTime();
 ### Local Development
 ```bash
 python -m http.server 5000
-# Open http://localhost:5000/enhanced.html
+# Open http://localhost:5000/index.html
 ```
 
 ### Port Forwarding (Public Access)
