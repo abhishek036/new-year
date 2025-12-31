@@ -3041,6 +3041,9 @@
                 </svg>
                 <span>Sound</span>
             </button>
+            <button class="toggle-btn" id="musicToggle" aria-label="Toggle music" style="min-width: 120px;">
+                <span>🎵 Play Music</span>
+            </button>
         </div>
     </nav>
 
@@ -3209,6 +3212,60 @@
         }
 
         // =====================================================
+        // BACKGROUND MUSIC PLAYER
+        // =====================================================
+        const playlist = [
+            { title: "Kina Chir", file: "kina chir.mpeg" },
+            { title: "Meet", file: "meet.mp3" },
+            { title: "Tum Se Hi", file: "tum se hi.mp3" }
+        ];
+
+        let currentTrackIndex = 0;
+        let bgMusic = new Audio();
+        bgMusic.loop = true;
+        bgMusic.volume = 0.1; // Very low volume as requested
+
+        function initBackgroundMusic() {
+            // Pick random start song
+            currentTrackIndex = Math.floor(Math.random() * playlist.length);
+            loadTrack(currentTrackIndex);
+        }
+
+        function loadTrack(index) {
+            const track = playlist[index];
+            bgMusic.src = track.file;
+            bgMusic.load();
+            // Try to play if we already have interaction
+            bgMusic.play().catch(() => {
+                console.log("Auto-play prevented. Waiting for interaction.");
+            });
+            updateMusicUI();
+        }
+
+        function nextTrack() {
+            currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+            loadTrack(currentTrackIndex);
+        }
+
+        function toggleMusic() {
+            if (bgMusic.paused) {
+                bgMusic.play();
+            } else {
+                bgMusic.pause();
+            }
+            updateMusicUI();
+        }
+
+        function updateMusicUI() {
+            const musicBtn = $('musicToggle');
+            if (musicBtn) {
+                const title = playlist[currentTrackIndex].title;
+                const icon = bgMusic.paused ? '▶️' : '⏸️';
+                musicBtn.innerHTML = `<span>${icon} ${title}</span>`;
+            }
+        }
+
+        // =====================================================
         // SOUND TOGGLE
         // =====================================================
         function toggleSound() {
@@ -3360,14 +3417,63 @@
             // Event listeners
             themeToggle.addEventListener('click', toggleTheme);
             soundToggle.addEventListener('click', toggleSound);
-            $('ctaBtn').addEventListener('click', handleCTA);
+            // Removed broken ctaBtn listener
+
 
             // Initialize live counters
             setTimeout(updateLiveCounters, 500);
             setInterval(updateLiveCounters, 10000);
 
             // Audio context on first interaction
-            document.addEventListener('click', () => initAudio(), { once: true });
+            document.addEventListener('click', () => {
+                initAudio();
+                if (bgMusic.paused) bgMusic.play();
+            }, { once: true });
+
+            // Initialize music
+            initBackgroundMusic();
+            const musicBtn = $('musicToggle');
+            if (musicBtn) {
+                musicBtn.addEventListener('click', () => {
+                    // If clicking specifically on music btn, toggle it.
+                    // If it was just starting, nextTrack logic could be here but toggle is safer.
+                    // Let's make the button toggle play/pause, but maybe long press or simple cycle?
+                    // User asked "changed by our music list".
+                    // Let's make it: Click -> Toggle, Double Click -> Next? Or just a simple Next button?
+                    // Simpler: Click to toggle. To change song, we might need another control or just cycle on click if playing?
+                    // Let's implementing cycling on click for now as "Music List" feature.
+                    // Wait, standard UI is Toggle. Let's stick to Toggle.
+                    // I'll add a small "Next" button in the UI or just make separate logic?
+                    // User said "changed by our music list".
+                    // Let's make the button Text clickable to change song?
+
+                    // Revised plan: Button toggles play/pause.
+                    // I'll add a "Next" action on right click or just add a separate button? 
+                    // Space is tight.
+                    // Let's make the button cycle songs if it's already playing?
+                    // No, that makes pausing hard.
+                    // I'll just add a "Next" button next to it.
+
+                    nextTrack(); // For now, let's make the button CYCLE songs to satisfy "changed by our music list".
+                    // If they want to pause, they can use sound toggle? No, that's global sound.
+                    // Okay, let's split: Click = Next Song, Right Click = Pause? 
+                    // Mobile doesn't have right click easily.
+
+                    // Let's go with: Click = Next Song. 
+                    // Pause is handled by "Sound" toggle globally? No, "Sound" is usually SFX.
+                    // I will make the button functionality:
+                    // If paused -> Play
+                    // If playing -> Next Song
+
+                    if (bgMusic.paused) {
+                        bgMusic.play();
+                    } else {
+                        nextTrack();
+                    }
+                    updateMusicUI();
+                });
+            }
+
 
             console.log('✨ Enhanced New Year 2026 Countdown Loaded!');
         });
@@ -4185,17 +4291,6 @@
                 }
             });
         });
-
-        if (page3Container) {
-            observer.observe(page3Container, { attributes: true, attributeFilter: ['class'] });
-        }
-
-        // Test Page 3 directly
-        window.testPage3 = function () {
-            initAudio();
-            page3Container.classList.add('active');
-            startPage3Typewriter();
-        };
 
         // Images are now fixed position - no JavaScript needed
     </script>
