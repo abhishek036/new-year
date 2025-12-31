@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="New Year 2026 Surprise Experience">
+    <title>Your Surprise 🎁 | New Year 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =====================================================
+           DESIGN TOKENS & BASE
+           ===================================================== */
+        :root {
+            --cyan: #00D2FF;
+            --gold: #FFD700;
+            --violet: #A855F7;
+            --rose: #FF6B9D;
+            --emerald: #10B981;
+            --deep-navy: #050510;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glow-inner: rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--deep-navy);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* =====================================================
+           AURORA BOREALIS BACKGROUND
+           ===================================================== */
+        .aurora-container {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            background: linear-gradient(180deg, #050510 0%, #0a0a20 50%, #0d0518 100%);
+        }
+
+        /* Aurora Light Orbs */
+        .aurora-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: auroraFloat 20s ease-in-out infinite;
+        }
+
+        .aurora-orb.violet-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.6) 0%, transparent 70%);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .aurora-orb.cyan-1 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(0, 210, 255, 0.5) 0%, transparent 70%);
+            top: 30%;
+            right: 15%;
+            animation-delay: -5s;
+        }
+
+        .aurora-orb.gold-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, transparent 70%);
+            bottom: 20%;
+            left: 30%;
+            animation-delay: -10s;
+        }
+
+        .aurora-orb.violet-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%);
+            bottom: 10%;
+            right: 5%;
+            animation-delay: -15s;
+        }
+
+        @keyframes auroraFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            25% {
+                transform: translate(50px, -30px) scale(1.1);
+            }
+
+            50% {
+                transform: translate(-30px, 50px) scale(0.9);
+            }
+
+            75% {
+                transform: translate(40px, 30px) scale(1.05);
+            }
+        }
+
+        /* =====================================================
+           FLUFFY CLOUDS
+           ===================================================== */
+        .clouds-container {
+            position: fixed;
+            inset: 0;
+            z-index: 2;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .fluffy-cloud {
+            position: absolute;
+            background: rgba(168, 200, 240, 0.15);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        /* Cloud shape using pseudo-elements */
+        .fluffy-cloud::before,
+        .fluffy-cloud::after {
+            content: '';
+            position: absolute;
+            background: inherit;
+            border-radius: 50%;
+        }
+
+        /* Cloud 1 - Small top left */
+        .fluffy-cloud:nth-child(1) {
+            width: 60px;
+            height: 35px;
+            top: 8%;
+            left: 5%;
+            animation: cloudFloat1 25s ease-in-out infinite;
+        }
+
+        .fluffy-cloud:nth-child(1)::before {
+            width: 35px;
+            height: 35px;
+            top: -15px;
+            left: 10px;
+        }
+
+        .fluffy-cloud:nth-child(1)::after {
+            width: 25px;
+            height: 25px;
+            top: -10px;
+            left: 35px;
+        }
+
+        /* Cloud 2 - Medium top right */
+        .fluffy-cloud:nth-child(2) {
+            width: 80px;
+            height: 40px;
+            top: 12%;
+            right: 15%;
+            animation: cloudFloat2 30s ease-in-out infinite;
+            animation-delay: -5s;
+        }
+
+        .fluffy-cloud:nth-child(2)::before {
+            width: 45px;
+            height: 45px;
+            top: -20px;
+            left: 12px;
+        }
+
+        .fluffy-cloud:nth-child(2)::after {
+            width: 30px;
+            height: 30px;
+            top: -12px;
+            left: 45px;
+        }
+
+        /* Cloud 3 - Small middle left */
+        .fluffy-cloud:nth-child(3) {
+            width: 50px;
+            height: 28px;
+            top: 35%;
+            left: 3%;
+            animation: cloudFloat3 22s ease-in-out infinite;
+            animation-delay: -10s;
+        }
+
+        .fluffy-cloud:nth-child(3)::before {
+            width: 28px;
+            height: 28px;
+            top: -12px;
+            left: 8px;
+        }
+
+        .fluffy-cloud:nth-child(3)::after {
+            width: 20px;
+            height: 20px;
+            top: -8px;
+            left: 28px;
+        }
+
+        /* Cloud 4 - Medium right side */
+        .fluffy-cloud:nth-child(4) {
+            width: 70px;
+            height: 35px;
+            top: 45%;
+            right: 5%;
+            animation: cloudFloat1 28s ease-in-out infinite;
+            animation-delay: -15s;
+        }
+
+        .fluffy-cloud:nth-child(4)::before {
+            width: 40px;
+            height: 40px;
+            top: -18px;
+            left: 10px;
+        }
+
+        .fluffy-cloud:nth-child(4)::after {
+            width: 28px;
+            height: 28px;
+            top: -10px;
+            left: 40px;
+        }
+
+        /* Cloud 5 - Tiny bottom left */
+        .fluffy-cloud:nth-child(5) {
+            width: 45px;
+            height: 25px;
+            top: 65%;
+            left: 8%;
+            animation: cloudFloat2 20s ease-in-out infinite;
+            animation-delay: -8s;
+        }
+
+        .fluffy-cloud:nth-child(5)::before {
+            width: 25px;
+            height: 25px;
+            top: -12px;
+            left: 8px;
+        }
+
+        .fluffy-cloud:nth-child(5)::after {
+            width: 18px;
+            height: 18px;
+            top: -7px;
+            left: 25px;
+        }
+
+        /* Cloud 6 - Small bottom right */
+        .fluffy-cloud:nth-child(6) {
+            width: 55px;
+            height: 30px;
+            top: 72%;
+            right: 12%;
+            animation: cloudFloat3 24s ease-in-out infinite;
+            animation-delay: -12s;
+        }
+
+        .fluffy-cloud:nth-child(6)::before {
+            width: 32px;
+            height: 32px;
+            top: -14px;
+            left: 10px;
+        }
+
+        .fluffy-cloud:nth-child(6)::after {
+            width: 22px;
+            height: 22px;
+            top: -9px;
+            left: 32px;
+        }
+
+        /* Cloud 7 - Medium center-left */
+        .fluffy-cloud:nth-child(7) {
+            width: 65px;
+            height: 32px;
+            top: 22%;
+            left: 20%;
+            animation: cloudFloat1 26s ease-in-out infinite;
+            animation-delay: -3s;
+        }
+
+        .fluffy-cloud:nth-child(7)::before {
+            width: 38px;
+            height: 38px;
+            top: -16px;
+            left: 10px;
+        }
+
+        .fluffy-cloud:nth-child(7)::after {
+            width: 26px;
+            height: 26px;
+            top: -10px;
+            left: 38px;
+        }
+
+        /* Cloud 8 - Small lower middle */
+        .fluffy-cloud:nth-child(8) {
+            width: 48px;
+            height: 26px;
+            top: 85%;
+            left: 35%;
+            animation: cloudFloat2 23s ease-in-out infinite;
+            animation-delay: -18s;
+        }
+
+        .fluffy-cloud:nth-child(8)::before {
+            width: 26px;
+            height: 26px;
+            top: -12px;
+            left: 9px;
+        }
+
+        .fluffy-cloud:nth-child(8)::after {
+            width: 20px;
+            height: 20px;
+            top: -8px;
+            left: 27px;
+        }
+
+        /* Subtle floating animations */
+        @keyframes cloudFloat1 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(8px, -4px);
+            }
+
+            50% {
+                transform: translate(15px, 2px);
+            }
+
+            75% {
+                transform: translate(6px, -3px);
+            }
+        }
+
+        @keyframes cloudFloat2 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            33% {
+                transform: translate(-6px, 5px);
+            }
+
+            66% {
+                transform: translate(10px, -3px);
+            }
+        }
+
+        @keyframes cloudFloat3 {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            20% {
+                transform: translate(5px, 3px);
+            }
+
+            40% {
+                transform: translate(-4px, -2px);
+            }
+
+            60% {
+                transform: translate(8px, 4px);
+            }
+
+            80% {
+                transform: translate(-3px, -4px);
+            }
+        }
+
+        /* Light Mode Cloud Colors */
+        [data-theme="light"] .fluffy-cloud {
+            background: rgba(135, 180, 220, 0.25);
+            opacity: 0.7;
+        }
+
+        /* Noise Texture Overlay */
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        /* =====================================================
+           BENTO GRID LAYOUT
+           ===================================================== */
+        .bento-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            min-height: 100vh;
+        }
+
+        /* Header Card */
+        .header-card {
+            text-align: center;
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .header-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 500;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.95);
+            letter-spacing: 0.02em;
+            text-shadow: 0 0 40px rgba(168, 85, 247, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+        }
+
+        /* Glass Card Base */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Inner Glow Border Effect */
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 1px;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.2) 0%,
+                    rgba(255, 255, 255, 0.05) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* Soft Glow Effect */
+        .glass-card::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 25px;
+            box-shadow:
+                inset 0 1px 1px rgba(255, 255, 255, 0.1),
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 0 60px rgba(168, 85, 247, 0.1);
+            pointer-events: none;
+        }
+
+        /* =====================================================
+           MUSIC PLAYER CARD
+           ===================================================== */
+        .music-card {
+            grid-column: span 7;
+            padding: 30px;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        /* Vinyl Record */
+        .vinyl-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            flex-shrink: 0;
+        }
+
+        .vinyl-record {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 50% 50%, #1a1a1a 0%, #1a1a1a 15%, transparent 15.5%),
+                radial-gradient(circle at 50% 50%, #222 20%, #222 22%, transparent 22.5%),
+                radial-gradient(circle at 50% 50%, #1a1a1a 35%, #1a1a1a 37%, transparent 37.5%),
+                radial-gradient(circle at 50% 50%, #222 50%, #222 52%, transparent 52.5%),
+                radial-gradient(circle at 50% 50%, #1a1a1a 65%, #1a1a1a 67%, transparent 67.5%),
+                conic-gradient(from 0deg, #1a1a1a, #2a2a2a, #1a1a1a, #2a2a2a, #1a1a1a);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: vinylSpin 8s linear infinite paused;
+        }
+
+        .vinyl-record.playing {
+            animation-play-state: running;
+        }
+
+        @keyframes vinylSpin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Album Art Center */
+        .vinyl-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+        }
+
+        .vinyl-center img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Visualizer */
+        .visualizer-bars {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 3px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .vinyl-record.playing+.vinyl-center~.visualizer-bars,
+        .vinyl-container:has(.vinyl-record.playing) .visualizer-bars {
+            opacity: 1;
+        }
+
+        .visualizer-bars span {
+            width: 4px;
+            background: linear-gradient(to top, var(--violet), var(--cyan));
+            border-radius: 2px;
+            animation: barBounce 0.5s ease infinite;
+        }
+
+        .visualizer-bars span:nth-child(1) {
+            height: 12px;
+            animation-delay: 0s;
+        }
+
+        .visualizer-bars span:nth-child(2) {
+            height: 18px;
+            animation-delay: 0.1s;
+        }
+
+        .visualizer-bars span:nth-child(3) {
+            height: 10px;
+            animation-delay: 0.2s;
+        }
+
+        .visualizer-bars span:nth-child(4) {
+            height: 16px;
+            animation-delay: 0.15s;
+        }
+
+        .visualizer-bars span:nth-child(5) {
+            height: 14px;
+            animation-delay: 0.05s;
+        }
+
+        @keyframes barBounce {
+
+            0%,
+            100% {
+                transform: scaleY(0.5);
+            }
+
+            50% {
+                transform: scaleY(1.2);
+            }
+        }
+
+        /* Player Info */
+        .player-details {
+            flex: 1;
+        }
+
+        .song-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--violet), var(--cyan));
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        .time-display {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .play-controls {
+            display: flex;
+            gap: 12px;
+        }
+
+        .ctrl-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ctrl-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.1);
+        }
+
+        .ctrl-btn.play-btn {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, var(--violet), var(--rose));
+            border: none;
+            font-size: 1.1rem;
+        }
+
+        /* =====================================================
+           SCORE CARD
+           ===================================================== */
+        .score-card {
+            grid-column: span 5;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.5s forwards;
+        }
+
+        .score-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 8px;
+        }
+
+        .score-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--gold), var(--rose));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .progress-dots {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .progress-dot {
+            width: 35px;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot.active {
+            background: linear-gradient(90deg, var(--gold), var(--violet));
+        }
+
+        .progress-dot.completed {
+            background: var(--emerald);
+        }
+
+        /* =====================================================
+           QUESTION CARD
+           ===================================================== */
+        .question-card {
+            grid-column: span 12;
+            padding: 30px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .question-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 210, 255, 0.3);
+        }
+
+        .question-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .question-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.5;
+        }
+
+        /* =====================================================
+           ANSWER OPTIONS
+           ===================================================== */
+        .options-grid {
+            grid-column: span 12;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.7s forwards;
+        }
+
+        .option-card {
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.15);
+        }
+
+        .option-card:hover::after {
+            box-shadow:
+                inset 0 1px 1px rgba(255, 255, 255, 0.15),
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 0 80px rgba(168, 85, 247, 0.2);
+        }
+
+        .option-letter {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--violet), var(--rose));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .option-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Option States */
+        .option-card.correct {
+            background: rgba(16, 185, 129, 0.15) !important;
+            border-color: var(--emerald) !important;
+        }
+
+        .option-card.correct::after {
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.3);
+        }
+
+        .option-card.wrong {
+            background: rgba(239, 68, 68, 0.15) !important;
+            animation: shake 0.5s ease;
+        }
+
+        .option-card.disabled {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20%,
+            60% {
+                transform: translateX(-5px);
+            }
+
+            40%,
+            80% {
+                transform: translateX(5px);
+            }
+        }
+
+        /* =====================================================
+           FEEDBACK CARD
+           ===================================================== */
+        .feedback-card {
+            grid-column: span 12;
+            padding: 20px;
+            text-align: center;
+            min-height: 60px;
+        }
+
+        .feedback-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+        }
+
+        .feedback-text.correct {
+            color: var(--emerald);
+        }
+
+        .feedback-text.wrong {
+            color: #ef4444;
+        }
+
+        /* =====================================================
+           RESULT CARD
+           ===================================================== */
+        .result-card {
+            grid-column: span 12;
+            padding: 50px 30px;
+            text-align: center;
+            display: none;
+        }
+
+        .result-card.show {
+            display: block;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .result-badge {
+            font-size: 5rem;
+            animation: badgePop 1s ease infinite;
+        }
+
+        @keyframes badgePop {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(-3deg);
+            }
+
+            50% {
+                transform: scale(1.1) rotate(3deg);
+            }
+        }
+
+        .result-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin: 20px 0 10px;
+        }
+
+        .result-subtitle {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+        }
+
+        .reveal-btn {
+            padding: 18px 45px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #fff;
+            background: linear-gradient(135deg, var(--violet), var(--rose), var(--gold));
+            background-size: 200% 200%;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            animation: gradientMove 3s ease infinite;
+            box-shadow: 0 10px 40px rgba(168, 85, 247, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .reveal-btn:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes gradientMove {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* =====================================================
+           THEME TOGGLE
+           ===================================================== */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        /* =====================================================
+           MOBILE RESPONSIVE
+           ===================================================== */
+        @media (max-width: 768px) {
+            .bento-grid {
+                gap: 15px;
+            }
+
+            .music-card {
+                grid-column: span 12;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .score-card {
+                grid-column: span 12;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vinyl-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            .vinyl-center {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        /* =====================================================
+           LIGHT MODE STYLES
+           ===================================================== */
+        [data-theme="light"] body {
+            background: #f0f4f8;
+        }
+
+        [data-theme="light"] .aurora-container {
+            background: linear-gradient(180deg, #e8eef5 0%, #d4e0ed 50%, #e2eaf4 100%);
+        }
+
+        [data-theme="light"] .aurora-orb {
+            opacity: 0.3;
+        }
+
+        [data-theme="light"] .header-title {
+            color: rgba(26, 26, 46, 0.95);
+            text-shadow: 0 0 40px rgba(168, 85, 247, 0.2);
+        }
+
+        [data-theme="light"] .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="light"] .glass-card::before {
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.5) 0%,
+                    rgba(255, 255, 255, 0.2) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+        }
+
+        [data-theme="light"] .glass-card::after {
+            box-shadow:
+                inset 0 1px 1px rgba(255, 255, 255, 0.8),
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                0 0 60px rgba(168, 85, 247, 0.05);
+        }
+
+        [data-theme="light"] .song-title,
+        [data-theme="light"] .score-label,
+        [data-theme="light"] .question-text,
+        [data-theme="light"] .option-text {
+            color: rgba(26, 26, 46, 0.9);
+        }
+
+        [data-theme="light"] .time-display {
+            color: rgba(26, 26, 46, 0.5);
+        }
+
+        [data-theme="light"] .ctrl-btn {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.1);
+            color: #1a1a2e;
+        }
+
+        [data-theme="light"] .progress-track,
+        [data-theme="light"] .progress-dot {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="light"] .option-card:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="light"] .result-subtitle {
+            color: rgba(26, 26, 46, 0.7);
+        }
+
+        [data-theme="light"] .theme-toggle {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.1);
+            color: #1a1a2e;
+        }
+
+        /* Question Icon - Image Support */
+        .question-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .question-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .question-icon .emoji-fallback {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Aurora Background -->
+    <div class="aurora-container">
+        <div class="aurora-orb violet-1"></div>
+        <div class="aurora-orb cyan-1"></div>
+        <div class="aurora-orb gold-1"></div>
+        <div class="aurora-orb violet-2"></div>
+    </div>
+
+    <!-- Fluffy Clouds -->
+    <div class="clouds-container">
+        <div class="fluffy-cloud"></div>
+        <div class="fluffy-cloud"></div>
+        <div class="fluffy-cloud"></div>
+        <div class="fluffy-cloud"></div>
+        <div class="fluffy-cloud"></div>
+        <div class="fluffy-cloud"></div>
+        <div class="fluffy-cloud"></div>
+        <div class="fluffy-cloud"></div>
+    </div>
+
+    <!-- Noise Texture -->
+    <div class="noise-overlay"></div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
+            <circle cx="12" cy="12" r="5" />
+            <path
+                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+        </svg>
+    </button>
+
+    <!-- Main Content -->
+    <div class="bento-container">
+        <!-- Header -->
+        <div class="header-card">
+            <h1 class="header-title" id="headerText"></h1>
+        </div>
+
+        <!-- Bento Grid -->
+        <div class="bento-grid" id="mainGrid">
+            <!-- Music Player Card -->
+            <div class="glass-card music-card">
+                <div class="vinyl-container">
+                    <div class="vinyl-record" id="vinylRecord"></div>
+                    <div class="vinyl-center">
+                        <img src="WhatsApp Image 2025-12-31 at 4.21.59 PM.jpeg" alt="Album">
+                    </div>
+                    <div class="visualizer-bars" id="visualizer">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="player-details">
+                    <div class="song-title">Our Special Song 🎵</div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="time-display"><span id="currentTime">0:00</span> / 3:30</div>
+                    <div class="play-controls">
+                        <button class="ctrl-btn">⏮</button>
+                        <button class="ctrl-btn play-btn" id="playBtn">▶</button>
+                        <button class="ctrl-btn">⏭</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Score Card -->
+            <div class="glass-card score-card">
+                <div class="score-label">Score</div>
+                <div class="score-value" id="scoreValue">0</div>
+                <div class="progress-dots">
+                    <div class="progress-dot" id="dot0"></div>
+                    <div class="progress-dot" id="dot1"></div>
+                    <div class="progress-dot" id="dot2"></div>
+                    <div class="progress-dot" id="dot3"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="glass-card question-card" id="questionCard">
+                <div class="question-icon" id="questionIcon">
+                    <img src="WhatsApp Image 2025-12-31 at 4.21.59 PM.jpeg" alt="Icon">
+                </div>
+                <div class="question-text" id="questionText">Loading...</div>
+            </div>
+
+            <!-- Answer Options -->
+            <div class="options-grid" id="optionsGrid">
+                <div class="glass-card option-card" data-option="0">
+                    <span class="option-letter">A</span>
+                    <span class="option-text" id="optA"></span>
+                </div>
+                <div class="glass-card option-card" data-option="1">
+                    <span class="option-letter">B</span>
+                    <span class="option-text" id="optB"></span>
+                </div>
+                <div class="glass-card option-card" data-option="2">
+                    <span class="option-letter">C</span>
+                    <span class="option-text" id="optC"></span>
+                </div>
+                <div class="glass-card option-card" data-option="3">
+                    <span class="option-letter">D</span>
+                    <span class="option-text" id="optD"></span>
+                </div>
+            </div>
+
+            <!-- Feedback -->
+            <div class="glass-card feedback-card">
+                <div class="feedback-text" id="feedbackText"></div>
+            </div>
+
+            <!-- Result Card (Hidden initially) -->
+            <div class="glass-card result-card" id="resultCard">
+                <div class="result-badge" id="resultBadge">🏆</div>
+                <div class="result-title" id="resultTitle">Perfect!</div>
+                <div class="result-subtitle" id="resultSubtitle">You scored 40 points!</div>
+                <button class="reveal-btn" id="revealBtn">Reveal Your Surprise 🎁</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // =====================================================
+        // TYPEWRITER HEADER
+        // =====================================================
+        const headerText = document.getElementById('headerText');
+        const text = "Now let's begin the surprise...";
+        let charIndex = 0;
+
+        function typeHeader() {
+            if (charIndex < text.length) {
+                headerText.textContent = text.substring(0, charIndex + 1);
+                charIndex++;
+                setTimeout(typeHeader, 50 + Math.random() * 30);
+            }
+        }
+        setTimeout(typeHeader, 500);
+
+        // =====================================================
+        // MUSIC PLAYER WITH PLAYLIST
+        // =====================================================
+        const playBtn = document.getElementById('playBtn');
+        const prevBtn = document.querySelector('.play-controls .ctrl-btn:first-child');
+        const nextBtn = document.querySelector('.play-controls .ctrl-btn:last-child');
+        const vinylRecord = document.getElementById('vinylRecord');
+        const vinylCenter = document.querySelector('.vinyl-center img');
+        const visualizer = document.getElementById('visualizer');
+        const progressFill = document.getElementById('progressFill');
+        const songTitle = document.querySelector('.song-title');
+        const timeDisplay = document.querySelector('.time-display');
+        const currentTimeEl = document.getElementById('currentTime');
+
+        // Songs playlist with cover images
+        const songs = [
+            {
+                title: "Kina Chir 💕",
+                file: "kina chir.mpeg",
+                cover: "image 1 (1).jpeg"
+            },
+            {
+                title: "Meet 🌹",
+                file: "meet.mpeg",
+                cover: "image 1 (2).jpeg"
+            },
+            {
+                title: "Tum Se Hi ❤️",
+                file: "tum se hi.mpeg",
+                cover: "image 1 (3).jpeg"
+            }
+        ];
+
+        let currentSongIndex = 0;
+        let audio = new Audio();
+        let isPlaying = false;
+
+        // Load song
+        function loadSong(index) {
+            currentSongIndex = index;
+            const song = songs[currentSongIndex];
+            audio.src = song.file;
+            songTitle.textContent = song.title;
+            vinylCenter.src = song.cover;
+            progressFill.style.width = '0%';
+            currentTimeEl.textContent = '0:00';
+            audio.load();
+        }
+
+        // Format time
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // Update progress
+        audio.addEventListener('timeupdate', () => {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            progressFill.style.width = progress + '%';
+            currentTimeEl.textContent = formatTime(audio.currentTime);
+
+            // Update total duration display
+            if (audio.duration) {
+                timeDisplay.innerHTML = `<span id="currentTime">${formatTime(audio.currentTime)}</span> / ${formatTime(audio.duration)}`;
+            }
+        });
+
+        // Song ended - play next
+        audio.addEventListener('ended', () => {
+            nextSong();
+        });
+
+        // Play/Pause
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                playBtn.textContent = '▶';
+                vinylRecord.classList.remove('playing');
+                visualizer.style.opacity = '0';
+            } else {
+                audio.play();
+                playBtn.textContent = '⏸';
+                vinylRecord.classList.add('playing');
+                visualizer.style.opacity = '1';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Previous song
+        function prevSong() {
+            currentSongIndex--;
+            if (currentSongIndex < 0) currentSongIndex = songs.length - 1;
+            loadSong(currentSongIndex);
+            if (isPlaying) {
+                audio.play();
+            }
+        }
+
+        // Next song
+        function nextSong() {
+            currentSongIndex++;
+            if (currentSongIndex >= songs.length) currentSongIndex = 0;
+            loadSong(currentSongIndex);
+            if (isPlaying) {
+                audio.play();
+            }
+        }
+
+        prevBtn.addEventListener('click', prevSong);
+        nextBtn.addEventListener('click', nextSong);
+
+        // Initialize first song
+        loadSong(0);
+
+        // =====================================================
+        // QUIZ SYSTEM
+        // =====================================================
+        const quizQuestions = [
+            {
+                question: "What's my favorite thing about you?",
+                image: "ques 1.jpeg",
+                options: ["Your smile", "Your laugh", "Your kindness", "Everything!"],
+                correct: 3
+            },
+            {
+                question: "What do I always say when I see you?",
+                image: "ques 2.jpeg",
+                options: ["Hello!", "You look amazing!", "I missed you!", "There's my favorite person!"],
+                correct: 3
+            },
+            {
+                question: "What's our best memory together?",
+                image: "ques 3.jpeg",
+                options: ["That random adventure", "Late night talks", "Silly moments", "All of them!"],
+                correct: 3
+            },
+            {
+                question: "What do I wish for you in 2026?",
+                image: "ques 4.jpeg",
+                options: ["Happiness", "Success", "Love", "All the above and more!"],
+                correct: 3
+            }
+        ];
+
+        let currentQ = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const q = quizQuestions[currentQ];
+            // Update question image
+            document.querySelector('.question-icon').innerHTML = `<img src="${q.image}" alt="Question ${currentQ + 1}">`;
+            document.getElementById('questionText').textContent = q.question;
+            document.getElementById('optA').textContent = q.options[0];
+            document.getElementById('optB').textContent = q.options[1];
+            document.getElementById('optC').textContent = q.options[2];
+            document.getElementById('optD').textContent = q.options[3];
+
+            document.querySelectorAll('.option-card').forEach(opt => {
+                opt.classList.remove('correct', 'wrong', 'disabled');
+            });
+
+            for (let i = 0; i < 4; i++) {
+                const dot = document.getElementById('dot' + i);
+                dot.classList.remove('active', 'completed');
+                if (i < currentQ) dot.classList.add('completed');
+                if (i === currentQ) dot.classList.add('active');
+            }
+
+            document.getElementById('feedbackText').textContent = '';
+            document.getElementById('feedbackText').className = 'feedback-text';
+        }
+
+        function handleAnswer(idx) {
+            const q = quizQuestions[currentQ];
+            const options = document.querySelectorAll('.option-card');
+
+            options.forEach(opt => opt.classList.add('disabled'));
+
+            if (idx === q.correct) {
+                options[idx].classList.add('correct');
+                score += 10;
+                document.getElementById('feedbackText').textContent = '✨ Correct! +10 points!';
+                document.getElementById('feedbackText').classList.add('correct');
+            } else {
+                options[idx].classList.add('wrong');
+                options[q.correct].classList.add('correct');
+                document.getElementById('feedbackText').textContent = 'Almost! The answer was ' + ['A', 'B', 'C', 'D'][q.correct];
+                document.getElementById('feedbackText').classList.add('wrong');
+            }
+
+            document.getElementById('scoreValue').textContent = score;
+
+            setTimeout(() => {
+                currentQ++;
+                if (currentQ < quizQuestions.length) {
+                    loadQuestion();
+                } else {
+                    showResult();
+                }
+            }, 1500);
+        }
+
+        function showResult() {
+            document.getElementById('questionCard').style.display = 'none';
+            document.getElementById('optionsGrid').style.display = 'none';
+            document.querySelector('.feedback-card').style.display = 'none';
+
+            const resultCard = document.getElementById('resultCard');
+            resultCard.classList.add('show');
+
+            const correct = score / 10;
+            let badge = '🏆', title = 'Perfect! You know me so well!';
+            if (correct < 4) { badge = '🌟'; title = 'Great job!'; }
+            if (correct < 3) { badge = '💖'; title = 'Good effort!'; }
+            if (correct < 2) { badge = '💕'; title = 'Nice try!'; }
+
+            document.getElementById('resultBadge').textContent = badge;
+            document.getElementById('resultTitle').textContent = title;
+            document.getElementById('resultSubtitle').textContent = 'You scored ' + score + ' points!';
+        }
+
+        // Event listeners
+        document.querySelectorAll('.option-card').forEach(opt => {
+            opt.addEventListener('click', () => {
+                if (!opt.classList.contains('disabled')) {
+                    handleAnswer(parseInt(opt.dataset.option));
+                }
+            });
+        });
+
+        // Reveal button -> Navigate to page 4
+        document.getElementById('revealBtn').addEventListener('click', () => {
+            window.location.href = 'page4.html';
+        });
+
+        // =====================================================
+        // THEME TOGGLE
+        // =====================================================
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+
+            // Update toggle icon
+            themeToggle.innerHTML = newTheme === 'light' ?
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>' :
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+        });
+
+        // Load first question
+        setTimeout(loadQuestion, 1200);
+    </script>
+</body>
+
+</html>
