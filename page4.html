@@ -1088,8 +1088,8 @@
             </div>
 
             <h2 class="achievement-text">🎉 Congratulations! 🎉</h2>
-            <p style="color: rgba(255,255,255,0.8); margin-bottom: 30px;">You completed your journey beautifully!</p>
-            <button class="continue-btn" id="toGiftBtn">Claim Your Gift 🎁</button>
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 30px;">PHOOL FOR THE FOOL</p>
+            <button class="continue-btn" id="toGiftBtn">lets move next</button>
         </div>
 
         <!-- PHASE 2: Gift Box -->
@@ -1527,7 +1527,8 @@
 
             // Show finale after reading
             await sleep(3000);
-            showPhase('phase-finale');
+            // showPhase('phase-finale'); // User requested to keep letter on screen
+            console.log("End of experience - Letter stays visible");
         }
 
         function sleep(ms) {
