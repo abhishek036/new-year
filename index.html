@@ -111,7 +111,22 @@
             transform: translateZ(0);
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
             will-change: transform, opacity;
+        }
+
+        /* Optimization for dynamic particles */
+        .firework,
+        .sparkle,
+        .confetti-piece,
+        .dust-particle,
+        .firework-ring {
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform: translateZ(0);
         }
 
         html {
@@ -3068,8 +3083,6 @@
             </div>
         </section>
 
-        <!-- Test Celebration Button -->
-        <button id="test-celebration-btn">🎆 Test Celebration</button>
 
     </main>
 
@@ -3077,7 +3090,8 @@
         // =====================================================
         // CONFIGURATION
         // =====================================================
-        const TARGET_DATE = new Date('January 1, 2026 00:00:00').getTime();
+        // Set countdown to 5 minutes from now every time page loads
+        const TARGET_DATE = new Date().getTime() + (5 * 60 * 1000);
 
         // =====================================================
         // DOM ELEMENTS
@@ -3798,32 +3812,9 @@
             }
         };
 
-        // =====================================================
-        // TEST FUNCTION (remove in production)
-        // =====================================================
-        window.testCinematic = function () {
-            cinematicPlayed = true;
-            daysEl.textContent = '00';
-            hoursEl.textContent = '00';
-            minutesEl.textContent = '00';
-            secondsEl.textContent = '00';
-            // Hide the test button
-            const testBtn = $('test-celebration-btn');
-            if (testBtn) testBtn.classList.add('hidden');
-            playCinematicSequence();
-        };
-        console.log('💡 To test cinematic sequence, run: testCinematic()');
 
-        // Test Celebration Button click handler
+        // Celebration Theme Toggle Handler
         document.addEventListener('DOMContentLoaded', () => {
-            const testBtn = $('test-celebration-btn');
-            if (testBtn) {
-                testBtn.addEventListener('click', () => {
-                    testCinematic();
-                });
-            }
-
-            // Celebration Theme Toggle Handler
             const celebrationThemeToggle = $('celebration-theme-toggle');
             if (celebrationThemeToggle) {
                 celebrationThemeToggle.addEventListener('click', () => {
