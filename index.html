@@ -175,9 +175,10 @@
         .bokeh {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
+            /* Reduced blur for performance */
+            filter: blur(40px);
             opacity: 0.5;
-            animation: bokehDrift 40s ease-in-out infinite;
+            /* Removed bokehDrift animation to stop 'shaking' and lag */
             transform: translate3d(0, 0, 0);
         }
 
@@ -375,7 +376,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.4));
+            /* Replaced expensive filter with optimized text-shadow simulation (via animation) */
             animation: shimmer 4s ease-in-out infinite;
         }
 
@@ -383,11 +384,11 @@
 
             0%,
             100% {
-                filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.4));
+                text-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
             }
 
             50% {
-                filter: drop-shadow(0 0 60px rgba(0, 210, 255, 0.6));
+                text-shadow: 0 0 60px rgba(0, 210, 255, 0.6);
             }
         }
 
@@ -397,13 +398,14 @@
         .countdown-wrapper {
             width: 100%;
             max-width: 1000px;
-            animation: fadeInUp 1s 0.2s var(--ease-out-expo) both, float 6s ease-in-out infinite;
+            animation: fadeInUp 1s 0.2s var(--ease-out-expo) both;
         }
 
         .countdown-glass {
             background: var(--glass-bg);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
+            /* Reduced blur for performance */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--glass-border);
             border-radius: 32px;
             padding: var(--space-8) var(--space-6);
@@ -424,7 +426,7 @@
             mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
-            animation: borderGlow 6s linear infinite;
+            animation: none;
         }
 
         @keyframes borderGlow {
